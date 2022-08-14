@@ -14,7 +14,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "checkJs": true
   },
   "include": [
     "next-env.d.ts",
@@ -22,6 +23,6 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js"
-  ],
+, "tailwind.config.cjs", "next.config.mjs"  ],
   "exclude": ["node_modules"]
 }
