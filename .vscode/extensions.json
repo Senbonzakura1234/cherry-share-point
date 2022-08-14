@@ -1,0 +1,15 @@
+{
+	"recommendations": [
+		"davidanson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
+		"donjayamanne.githistory",
+		"dsznajder.es7-react-js-snippets",
+		"eamodio.gitlens",
+		"ecmel.vscode-html-css",
+		"esbenp.prettier-vscode",
+		"formulahendry.auto-rename-tag",
+		"meganrogge.template-string-converter",
+		"shardulm94.trailing-spaces",
+		"streetsidesoftware.code-spell-checker"
+	]
+}

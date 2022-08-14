@@ -1,0 +1,35 @@
+{
+	"cSpell.diagnosticLevel": "Hint",
+	"cSpell.ignorePaths": [
+		"**/node_modules/**",
+		"**/.yarn/**",
+		"**/.next/**",
+		"**/.build/**",
+		"**/.out/**",
+		"**/.vscode/extensions.json",
+		"yarn.lock",
+		".env"
+	],
+	"cSpell.words": [],
+	"editor.formatOnSave": true,
+	"editor.rulers": [80],
+	"eslint.alwaysShowStatus": true,
+	"eslint.format.enable": true,
+	"eslint.lintTask.enable": true,
+	"eslint.packageManager": "yarn",
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json",
+		"markdown"
+	],
+	"files.associations": {
+		"*.eslintrc": "json",
+		"*.json": "json",
+		"*.prettierrc": "json"
+	},
+	"markdownlint.ignore": ["LICENSE"],
+	"typescript.tsdk": "node_modules\\typescript\\lib"
+}
