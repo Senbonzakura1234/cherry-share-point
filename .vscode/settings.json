@@ -10,7 +10,8 @@
 		"yarn.lock",
 		".env"
 	],
-	"cSpell.words": [],
+	"cSpell.words": ["superjson", "tailwindcss", "TRPC"],
+	"css.lint.unknownAtRules": "ignore",
 	"editor.formatOnSave": true,
 	"editor.rulers": [80],
 	"eslint.alwaysShowStatus": true,

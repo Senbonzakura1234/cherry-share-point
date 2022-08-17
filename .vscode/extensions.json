@@ -10,6 +10,7 @@
 		"formulahendry.auto-rename-tag",
 		"meganrogge.template-string-converter",
 		"shardulm94.trailing-spaces",
-		"streetsidesoftware.code-spell-checker"
+		"streetsidesoftware.code-spell-checker",
+		"willstakayama.vscode-nextjs-snippets"
 	]
 }
