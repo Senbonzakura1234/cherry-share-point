@@ -8,5 +8,9 @@ module.exports = {
 		},
 		extend: {},
 	},
-	plugins: [],
+	plugins: [require('daisyui')],
+	daisyui: {
+		themes: ['fantasy', 'dracula'],
+		darkTheme: 'dracula',
+	},
 };

@@ -5,6 +5,7 @@ import { withTRPC } from '@trpc/next';
 import superjson from 'superjson';
 import { SessionProvider } from 'next-auth/react';
 import '../styles/globals.css';
+import { ThemeProvider } from 'next-themes';
 
 const MyApp: AppType = ({
 	Component,
@@ -12,7 +13,9 @@ const MyApp: AppType = ({
 }) => {
 	return (
 		<SessionProvider session={session}>
-			<Component {...pageProps} />
+			<ThemeProvider attribute='data-theme' defaultTheme='fantasy'>
+				<Component {...pageProps} />
+			</ThemeProvider>
 		</SessionProvider>
 	);
 };

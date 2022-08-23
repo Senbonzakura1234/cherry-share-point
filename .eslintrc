@@ -3,6 +3,7 @@
 		"next",
 		"prettier",
 		"plugin:prettier/recommended",
+		"plugin:tailwindcss/recommended",
 		"plugin:json/recommended",
 		"plugin:markdown/recommended"
 	],
@@ -20,7 +21,7 @@
 			"processor": "markdown/markdown"
 		}
 	],
-	"plugins": ["prettier", "html", "markdown"],
+	"plugins": ["prettier", "tailwindcss", "html", "markdown"],
 	"root": true,
 	"rules": {
 		"class-methods-use-this": "off",
@@ -56,6 +57,7 @@
 		"react-hooks/exhaustive-deps": "warn",
 		"react-hooks/rules-of-hooks": "error",
 		"react/prop-types": "off",
-		"react/react-in-jsx-scope": "off"
+		"react/react-in-jsx-scope": "off",
+		"tailwindcss/no-custom-classname": "off"
 	}
 }
