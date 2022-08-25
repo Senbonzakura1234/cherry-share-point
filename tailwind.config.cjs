@@ -6,11 +6,18 @@ module.exports = {
 			sans: ['Sora', 'sans-serif'],
 			serif: ['Merriweather', 'serif'],
 		},
-		extend: {},
+		extend: {
+			gridTemplateRows: {
+				layout: '64px minmax(auto, 1fr)',
+			},
+			gridTemplateColumns: {
+				searchBar: 'minmax(auto, 1fr) 48px',
+			},
+		},
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
-		themes: ['fantasy', 'dracula'],
+		themes: ['autumn', 'dracula'],
 		darkTheme: 'dracula',
 	},
 };
