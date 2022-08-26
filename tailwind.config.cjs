@@ -8,7 +8,8 @@ module.exports = {
 		},
 		extend: {
 			gridTemplateRows: {
-				layout: '64px minmax(auto, 1fr)',
+				layoutMobile: '64px minmax(auto, 1fr)',
+				layoutDesktop: '72px minmax(auto, 1fr)',
 			},
 			gridTemplateColumns: {
 				searchBar: 'minmax(auto, 1fr) 48px',

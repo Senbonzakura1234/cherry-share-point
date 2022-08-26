@@ -1,11 +1,11 @@
-// src/pages/_app.tsx
+import '../styles/globals.css';
 import type { AppRouter } from '../server/router';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import { withTRPC } from '@trpc/next';
 import superjson from 'superjson';
 import { SessionProvider } from 'next-auth/react';
-import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
+import Layout from '~/components/Layout';
 
 const MyApp: AppType = ({
 	Component,
@@ -14,7 +14,9 @@ const MyApp: AppType = ({
 	return (
 		<SessionProvider session={session}>
 			<ThemeProvider attribute='data-theme' defaultTheme='autumn'>
-				<Component {...pageProps} />
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</ThemeProvider>
 		</SessionProvider>
 	);

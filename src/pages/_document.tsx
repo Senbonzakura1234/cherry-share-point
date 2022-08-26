@@ -4,9 +4,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class SpecialDocument extends Document {
 	render() {
 		return (
-			<Html>
+			<Html className='overflow-hidden'>
 				<Head />
-				<body>
+				<body className='overflow-hidden'>
 					<Main />
 					<NextScript />
 				</body>

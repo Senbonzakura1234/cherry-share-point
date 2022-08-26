@@ -15,12 +15,16 @@
 		"jsx": "preserve",
 		"incremental": true,
 		"noUncheckedIndexedAccess": true,
-		"checkJs": true
+		"checkJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		}
 	},
 	"include": [
 		"next-env.d.ts",
 		"next-auth.d.ts",
-		"global.d.ts",
+		"daisyui.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		"**/*.js",
