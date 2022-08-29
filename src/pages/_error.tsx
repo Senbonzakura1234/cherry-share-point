@@ -3,11 +3,10 @@ import { type NextPage } from 'next';
 import Link from 'next/link';
 import { getStatusCodeName } from '~/utils/helper';
 
-const ErrorPage: NextPage<{ statusCode: number | undefined }> = ({
+const ErrorPage: NextPage<{ statusCode: number | undefined; err: any }> = ({
 	statusCode,
+	err,
 }) => {
-	// const statusCode: number | undefined = undefined;
-
 	return (
 		<>
 			<h1
@@ -45,6 +44,22 @@ const ErrorPage: NextPage<{ statusCode: number | undefined }> = ({
 					</p>
 				</div>
 			</div>
+
+			{err && (
+				<div className='collapse mx-auto max-w-sm lg:max-w-lg'>
+					<input type='checkbox' />
+					<div className='collapse-title text-warning !px-0 text-center'>
+						Click to see detail
+					</div>
+					<div className='collapse-content text-neutral h-48 overflow-y-auto break-words'>
+						{err?.message && (
+							<h2 className='mb-2 font-semibold'>{err.message}</h2>
+						)}
+						{err?.stack && <p>{err.stack}</p>}
+					</div>
+				</div>
+			)}
+
 			<Link href={'/'} passHref>
 				<a className='link link-hover mx-auto text-center font-semibold'>
 					Back To Home
@@ -56,7 +71,7 @@ const ErrorPage: NextPage<{ statusCode: number | undefined }> = ({
 
 ErrorPage.getInitialProps = ({ res, err }) => {
 	const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-	return { statusCode };
+	return { statusCode, err };
 };
 
 export default ErrorPage;

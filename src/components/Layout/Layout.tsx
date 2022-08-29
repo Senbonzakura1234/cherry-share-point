@@ -9,15 +9,15 @@ export const Layout: FC<LayoutProps> = ({ children, isLogin, pageProps }) => {
 	const id = useId();
 
 	const showLayout = useMemo(() => {
-		return !pageProps?.statusCode && isLogin;
-	}, [isLogin, pageProps?.statusCode]);
+		return !pageProps?.statusCode && !pageProps?.err && isLogin;
+	}, [isLogin, pageProps?.err, pageProps?.statusCode]);
 
 	return (
 		<div
-			className={clsx('grid h-screen', {
+			className={clsx('grid h-screen w-screen', {
 				['grid-rows-layoutMobile lg:grid-rows-layoutDesktop bg-base-300 lg:gap-2']:
 					showLayout,
-				['place-content-center gap-2']: !showLayout,
+				['place-content-center gap-2 p-3']: !showLayout,
 			})}
 		>
 			{showLayout ? (
