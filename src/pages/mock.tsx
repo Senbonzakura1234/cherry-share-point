@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next/types';
 import dynamic from 'next/dynamic';
 import { trpc } from '~/utils/trpc';
 const Mock = dynamic(() => import('~/components/Mock'), {

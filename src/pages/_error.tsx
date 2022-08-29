@@ -1,5 +1,5 @@
+import type { NextPage } from 'next/types';
 import clsx from 'clsx';
-import { type NextPage } from 'next';
 import Link from 'next/link';
 import { getStatusCodeName } from '~/utils/helper';
 

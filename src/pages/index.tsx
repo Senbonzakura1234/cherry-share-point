@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next/types';
 import Image from 'next/image';
 import { trpc } from '~/utils/trpc';
 
