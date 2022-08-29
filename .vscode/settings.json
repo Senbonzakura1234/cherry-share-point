@@ -16,10 +16,12 @@
 		"headlessui",
 		"heroicons",
 		"Merriweather",
+		"Monoton",
 		"nextauth",
 		"superjson",
 		"tailwindcss",
-		"TRPC"
+		"TRPC",
+		"Varela"
 	],
 	"css.lint.unknownAtRules": "ignore",
 	"editor.formatOnSave": true,

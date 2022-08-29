@@ -11,3 +11,12 @@ export type ContentProps = CommonProps<{
 export type HeaderProps = {
 	inputId: string;
 };
+
+export type HeadDocumentProps = {
+	pageProps: Record<string | unknown>;
+};
+
+export type LayoutProps = CommonProps<{
+	isLogin?: boolean;
+	pageProps: Record<string | unknown>;
+}>;

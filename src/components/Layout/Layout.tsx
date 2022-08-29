@@ -1,32 +1,33 @@
 import { useId, useMemo, type FC } from 'react';
-import Head from 'next/head';
 
-import { type CommonProps } from '~/types/props';
+import { type LayoutProps } from '~/types/props';
 import Content from './Content';
-import { useRouter } from 'next/router';
-import { getLinkTitle } from '~/utils/helper';
 import Header from './Header';
+import clsx from 'clsx';
 
-export const Layout: FC<CommonProps> = ({ children }) => {
-	const { asPath } = useRouter();
+export const Layout: FC<LayoutProps> = ({ children, isLogin, pageProps }) => {
 	const id = useId();
 
-	const prefixTitle = useMemo(() => getLinkTitle(asPath), [asPath]);
+	const showLayout = useMemo(() => {
+		return !pageProps?.statusCode && isLogin;
+	}, [isLogin, pageProps?.statusCode]);
 
 	return (
-		<>
-			<Head>
-				<title>
-					{prefixTitle ? `${prefixTitle} - ` : ''}Cherry Share Point
-				</title>
-				<meta name='description' content='Home' />
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
-
-			<div className='grid-rows-layoutMobile lg:grid-rows-layoutDesktop bg-base-300 grid h-screen lg:gap-2'>
-				<Header inputId={id} />
-				<Content inputId={id}>{children}</Content>
-			</div>
-		</>
+		<div
+			className={clsx('grid h-screen', {
+				['grid-rows-layoutMobile lg:grid-rows-layoutDesktop bg-base-300 lg:gap-2']:
+					showLayout,
+				['place-content-center gap-2']: !showLayout,
+			})}
+		>
+			{showLayout ? (
+				<>
+					<Header inputId={id} />
+					<Content inputId={id}>{children}</Content>
+				</>
+			) : (
+				children
+			)}
+		</div>
 	);
 };

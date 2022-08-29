@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 				.fill(0)
 				.map((_, key) => (
 					<div
-						className='card bg-base-100 w-[22.5rem] shadow-xl'
+						className='card bg-base-100 dark:bg-base-300 w-[22.5rem] shadow-xl'
 						key={key}
 					>
 						<figure>
@@ -29,8 +29,8 @@ const Home: NextPage = () => {
 							</h2>
 							<p>If a dog chews shoes whose shoes does he choose?</p>
 							<div className='card-actions justify-end'>
-								<div className='badge badge-ghost'>Fashion</div>
-								<div className='badge badge-ghost'>Products</div>
+								<div className='badge badge-info'>Fashion</div>
+								<div className='badge badge-info'>Products</div>
 							</div>
 						</div>
 					</div>

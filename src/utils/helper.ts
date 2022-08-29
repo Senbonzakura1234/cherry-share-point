@@ -1,6 +1,15 @@
-import { SideNavLink } from '~/data/constant';
+import { SideNavLink, statusCodeMapping } from '~/data/constant';
 
-export const getLinkTitle = (asPath = '') =>
-	Object.values(SideNavLink)
+export const getStatusCodeName = (statusCode: number): string =>
+	statusCodeMapping[statusCode] ?? statusCode.toString();
+
+export const getLinkTitle = (
+	asPath = '',
+	statusCode: number | undefined,
+): string | undefined => {
+	if (!!statusCode) return getStatusCodeName(statusCode);
+
+	return Object.values(SideNavLink)
 		.flat()
 		.find(({ href }) => href === asPath && href !== '/')?.title;
+};

@@ -6,6 +6,12 @@ import superjson from 'superjson';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
 import Layout from '~/components/Layout';
+import DocumentHead from '~/components/DocumentHead';
+
+// eslint-disable-next-line prefer-const
+let pretendServerState = {
+	isLogin: true,
+};
 
 const MyApp: AppType = ({
 	Component,
@@ -14,7 +20,8 @@ const MyApp: AppType = ({
 	return (
 		<SessionProvider session={session}>
 			<ThemeProvider attribute='data-theme' defaultTheme='autumn'>
-				<Layout>
+				<DocumentHead pageProps={pageProps} />
+				<Layout {...pretendServerState} pageProps={pageProps}>
 					<Component {...pageProps} />
 				</Layout>
 			</ThemeProvider>

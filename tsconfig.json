@@ -25,6 +25,7 @@
 		"next-env.d.ts",
 		"next-auth.d.ts",
 		"daisyui.d.ts",
+		"typography.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		"**/*.js",

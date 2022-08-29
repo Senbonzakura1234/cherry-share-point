@@ -3,8 +3,9 @@ module.exports = {
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		fontFamily: {
-			sans: ['Sora', 'sans-serif'],
-			serif: ['Merriweather', 'serif'],
+			sans: ['Varela Round', 'sans-serif'],
+			serif: ['Merriweather Sans', 'sans-serif'],
+			mono: ['Monoton', 'cursive'],
 		},
 		extend: {
 			gridTemplateRows: {
@@ -16,7 +17,7 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('daisyui')],
+	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	daisyui: {
 		themes: ['autumn', 'dracula'],
 		darkTheme: 'dracula',

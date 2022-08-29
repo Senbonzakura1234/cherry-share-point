@@ -1,7 +1,8 @@
 import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/solid';
+import { type FC } from 'react';
 
-export function ThemeSwitcher() {
+export const ThemeSwitcher: FC = () => {
 	const { theme, setTheme } = useTheme();
 
 	return (
@@ -17,4 +18,4 @@ export function ThemeSwitcher() {
 			<SunIcon className={'swap-off h-5 w-5'} />
 		</label>
 	);
-}
+};

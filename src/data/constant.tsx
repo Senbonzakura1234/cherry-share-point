@@ -5,6 +5,7 @@ import {
 	HeartIcon,
 	TrashIcon,
 	CogIcon,
+	LogoutIcon,
 } from '@heroicons/react/solid';
 import type { NavLinkItem } from '../types/common';
 
@@ -43,5 +44,21 @@ export const SideNavLink: Record<string, NavLinkItem[]> = {
 			href: '/other/setting',
 			Icon: CogIcon,
 		},
+
+		{
+			title: 'Logout',
+			href: '/auth/logout',
+			Icon: LogoutIcon,
+		},
 	],
+};
+
+export const statusCodeMapping: Record<number, string> = {
+	400: 'Bad Request',
+	401: 'Unauthorize',
+	403: 'Forbidden',
+	404: 'Not Found',
+	408: 'Request timeout',
+	500: 'Internal Server Error',
+	502: 'Service Unavailable',
 };
