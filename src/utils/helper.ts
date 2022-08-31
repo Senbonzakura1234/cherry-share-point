@@ -1,4 +1,4 @@
-import { SideNavLink, statusCodeMapping } from '~/data/constant';
+import { SIDE_NAV_LINK, statusCodeMapping } from '~/data/constant';
 
 export const getStatusCodeName = (statusCode: number): string =>
 	statusCodeMapping[statusCode] ?? statusCode.toString();
@@ -9,7 +9,7 @@ export const getLinkTitle = (
 ): string | undefined => {
 	if (!!statusCode) return getStatusCodeName(statusCode);
 
-	return Object.values(SideNavLink)
+	return Object.values(SIDE_NAV_LINK)
 		.flat()
 		.find(({ href }) => href === asPath && href !== '/')?.title;
 };

@@ -5,6 +5,7 @@ import DiscordProvider from 'next-auth/providers/discord';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { prisma } from '~/server/db/client';
 import { env } from '~/env/server.mjs';
+import { SIGNIN_PATH } from '~/data/constant';
 
 export const authOptions: NextAuthOptions = {
 	// Include user.id on session
@@ -25,6 +26,10 @@ export const authOptions: NextAuthOptions = {
 		}),
 		// ...add more providers here
 	],
+	pages: {
+		signIn: SIGNIN_PATH,
+		error: '/_error', // Error code passed in query string as ?error=
+	},
 };
 
 export default NextAuth(authOptions);

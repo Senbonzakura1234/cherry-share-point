@@ -1,32 +1,45 @@
-import { useId, useMemo, type FC } from 'react';
+import { useEffect, useId, useMemo, type FC } from 'react';
 
 import { type LayoutProps } from '~/types/props';
 import Content from './Content';
 import Header from './Header';
 import clsx from 'clsx';
+import { useSession } from 'next-auth/react';
 
-export const Layout: FC<LayoutProps> = ({ children, isLogin, pageProps }) => {
+export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
+	const { status } = useSession();
 	const id = useId();
 
-	const showLayout = useMemo(() => {
-		return !pageProps?.statusCode && !pageProps?.err && isLogin;
-	}, [isLogin, pageProps?.err, pageProps?.statusCode]);
+	const { isHideLayout, isLoading } = useMemo(() => {
+		const isHideLayout =
+			!!pageProps?.statusCode ||
+			!pageProps?.err ||
+			status === 'unauthenticated';
+		const isLoading = status === 'loading';
+		return { isHideLayout, isLoading };
+	}, [pageProps?.err, pageProps?.statusCode, status]);
 
 	return (
 		<div
 			className={clsx('grid h-screen w-screen', {
 				['grid-rows-layoutMobile lg:grid-rows-layoutDesktop bg-base-300 lg:gap-2']:
-					showLayout,
-				['place-content-center gap-2 p-3']: !showLayout,
+					!isHideLayout,
+				['place-content-center gap-2 p-3']: isHideLayout,
 			})}
 		>
-			{showLayout ? (
-				<>
-					<Header inputId={id} />
-					<Content inputId={id}>{children}</Content>
-				</>
+			{isLoading ? (
+				<>loading</>
 			) : (
-				children
+				<>
+					{!isHideLayout ? (
+						<>
+							<Header inputId={id} />
+							<Content inputId={id}>{children}</Content>
+						</>
+					) : (
+						children
+					)}
+				</>
 			)}
 		</div>
 	);

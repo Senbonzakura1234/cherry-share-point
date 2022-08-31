@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/solid';
 import type { NavLinkItem } from '../types/common';
 
-export const SideNavLink: Record<string, NavLinkItem[]> = {
+export const SIDE_NAV_LINK: Record<string, NavLinkItem[]> = {
 	Main: [
 		{
 			title: 'Overview',
@@ -52,6 +52,16 @@ export const SideNavLink: Record<string, NavLinkItem[]> = {
 		},
 	],
 };
+
+export const PROTECTED_PATH: string[] = [
+	...Object.values(SIDE_NAV_LINK)
+		.flat()
+		.map(({ href }) => href),
+];
+
+export const SIGNIN_PATH: string = '/auth/signin';
+
+export const PUBLIC_PATH: string[] = [SIGNIN_PATH, '/_error'];
 
 export const statusCodeMapping: Record<number, string> = {
 	400: 'Bad Request',

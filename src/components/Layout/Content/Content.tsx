@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { type FC, Fragment, useState } from 'react';
-import { SideNavLink } from '~/data/constant';
+import { SIDE_NAV_LINK } from '~/data/constant';
 import { type ContentProps } from '~/types/props';
 
 export const Content: FC<ContentProps> = ({ children, inputId }) => {
@@ -37,7 +37,7 @@ export const Content: FC<ContentProps> = ({ children, inputId }) => {
 					<li className={clsx('menu-title', { ['w-full']: isDrawerOpen })}>
 						<span className='w-[63px] text-center'>Menu</span>
 					</li>
-					{Object.entries(SideNavLink).map(([title, content], key1) => (
+					{Object.entries(SIDE_NAV_LINK).map(([title, content], key1) => (
 						<Fragment key={key1}>
 							<div className='divider my-1'></div>
 							<li
