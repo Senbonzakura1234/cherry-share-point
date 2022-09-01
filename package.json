@@ -26,7 +26,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"lint:fix": "next lint --fix",
-		"postinstall": "prisma generate"
+		"postinstall": "prisma generate --data-proxy"
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.6.6",
