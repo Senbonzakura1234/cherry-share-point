@@ -1,13 +1,15 @@
-import { useId, useMemo, type FC } from 'react';
+import { useEffect, useId, useMemo, type FC } from 'react';
 
 import { type LayoutProps } from '~/types/props';
 import Content from './Content';
 import Header from './Header';
 import clsx from 'clsx';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
-	const { data: session, status } = useSession();
+	const { status } = useSession();
+	const { asPath, basePath, pathname } = useRouter();
 	const id = useId();
 
 	const { isHideLayout, isLoading } = useMemo(() => {
@@ -19,7 +21,21 @@ export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
 		return { isHideLayout, isLoading };
 	}, [pageProps?.err, pageProps?.statusCode, status]);
 
-	console.log({ status });
+	useEffect(() => {
+		console.log({ status });
+	}, [status]);
+
+	useEffect(() => {
+		console.log({ asPath });
+	}, [asPath]);
+
+	useEffect(() => {
+		console.log({ basePath });
+	}, [basePath]);
+
+	useEffect(() => {
+		console.log({ pathname });
+	}, [pathname]);
 
 	return (
 		<div
