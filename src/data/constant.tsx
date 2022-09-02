@@ -5,7 +5,6 @@ import {
 	HeartIcon,
 	TrashIcon,
 	CogIcon,
-	LogoutIcon,
 } from '@heroicons/react/solid';
 import type { NavLinkItem } from '../types/common';
 
@@ -43,12 +42,6 @@ export const SIDE_NAV_LINK: Record<string, NavLinkItem[]> = {
 			title: 'Setting',
 			href: '/other/setting',
 			Icon: CogIcon,
-		},
-
-		{
-			title: 'Logout',
-			href: '/auth/logout',
-			Icon: LogoutIcon,
 		},
 	],
 };

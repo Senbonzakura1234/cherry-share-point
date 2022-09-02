@@ -1,4 +1,6 @@
+import { LogoutIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
+import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { type FC, Fragment, useState } from 'react';
@@ -37,39 +39,58 @@ export const Content: FC<ContentProps> = ({ children, inputId }) => {
 					<li className={clsx('menu-title', { ['w-full']: isDrawerOpen })}>
 						<span className='w-[63px] text-center'>Menu</span>
 					</li>
-					{Object.entries(SIDE_NAV_LINK).map(([title, content], key1) => (
-						<Fragment key={key1}>
-							<div className='divider my-1'></div>
-							<li
-								className={clsx('menu-title', {
-									['w-full']: isDrawerOpen,
-								})}
-							>
-								<span className='w-[63px] text-center'>{title}</span>
-							</li>
-
-							{content.map(({ title, href, Icon }, key2) => (
-								<li className='my-1' key={`${key1}-${key2}`}>
-									<Link href={href} passHref>
-										<a
-											className={clsx('flex font-semibold', {
-												['active !font-bold']: asPath === href,
-											})}
-										>
-											<Icon className='h-5 w-[31px]' />
-											<span
-												className={clsx({
-													['lg:hidden']: isDrawerOpen,
+					{Object.entries(SIDE_NAV_LINK).map(
+						([menuTitle, content], key1) => (
+							<Fragment key={key1}>
+								<div className='divider my-1'></div>
+								<li
+									className={clsx('menu-title', {
+										['w-full']: isDrawerOpen,
+									})}
+								>
+									<span className='w-[63px] text-center'>
+										{menuTitle}
+									</span>
+								</li>
+								{content.map(({ title, href, Icon }, key2) => (
+									<li className='my-1' key={`${key1}-${key2}`}>
+										<Link href={href} passHref>
+											<a
+												className={clsx('flex font-semibold', {
+													['active !font-bold']: asPath === href,
 												})}
 											>
-												{title}
-											</span>
-										</a>
-									</Link>
+												<Icon className='h-5 w-[31px]' />
+												<span
+													className={clsx({
+														['lg:hidden']: isDrawerOpen,
+													})}
+												>
+													{title}
+												</span>
+											</a>
+										</Link>
+									</li>
+								))}
+								<li className='my-1' key={`${key1}-logout`}>
+									<a className='flex font-semibold'>
+										<LogoutIcon className='h-5 w-[31px]' />
+										<span
+											className={clsx({
+												['lg:hidden']: isDrawerOpen,
+											})}
+											onClick={({ preventDefault }) => {
+												preventDefault();
+												signOut();
+											}}
+										>
+											Logout
+										</span>
+									</a>
 								</li>
-							))}
-						</Fragment>
-					))}
+							</Fragment>
+						),
+					)}
 				</ul>
 			</aside>
 		</div>
