@@ -21,7 +21,7 @@ const SignIn: NextPage<{
 	> | null;
 }> = ({ providers }) => {
 	return (
-		<>
+		<div className='bg-base-content'>
 			{providers &&
 				Object.values(providers).map(provider => (
 					<div key={provider.name}>
@@ -30,7 +30,7 @@ const SignIn: NextPage<{
 						</button>
 					</div>
 				))}
-		</>
+		</div>
 	);
 };
 
