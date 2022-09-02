@@ -14,7 +14,6 @@ export const authOptions: NextAuthOptions = {
 			if (session.user) {
 				session.user.id = user.id;
 			}
-			console.log({ session, user });
 
 			return session;
 		},
@@ -35,6 +34,9 @@ export const authOptions: NextAuthOptions = {
 		}),
 		// ...add more providers here
 	],
+	pages: {
+		signIn: '/auth/signin',
+	},
 };
 
 export default NextAuth(authOptions);
