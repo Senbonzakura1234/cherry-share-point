@@ -19,8 +19,6 @@ export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
 		return { isHideLayout, isLoading };
 	}, [pageProps?.err, pageProps?.statusCode, status]);
 
-	console.log({ session });
-
 	return (
 		<div
 			className={clsx('grid h-screen w-screen', {
