@@ -13,7 +13,7 @@ export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
 	const { isHideLayout, isLoading } = useMemo(() => {
 		const isHideLayout =
 			!!pageProps?.statusCode ||
-			!pageProps?.err ||
+			!!pageProps?.err ||
 			status === 'unauthenticated';
 		const isLoading = status === 'loading';
 		return { isHideLayout, isLoading };
