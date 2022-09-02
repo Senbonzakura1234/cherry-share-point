@@ -9,7 +9,7 @@ import { type ContentProps } from '~/types/props';
 
 export const Content: FC<ContentProps> = ({ children, inputId }) => {
 	const [isDrawerOpen, setDrawerOpen] = useState<boolean>(false);
-	const { asPath } = useRouter();
+	const { asPath, basePath } = useRouter();
 
 	return (
 		<div className='drawer drawer-mobile bg-base-300 grid !h-auto lg:gap-2 lg:px-2 lg:pb-2'>
@@ -72,14 +72,17 @@ export const Content: FC<ContentProps> = ({ children, inputId }) => {
 										</Link>
 									</li>
 								))}
-								<li className='my-1' key={`${key1}-logout`}>
-									<a
-										className='flex font-semibold'
-										onClick={({ preventDefault }) => {
-											!!preventDefault && preventDefault();
-											signOut();
-										}}
-									>
+								<li
+									className='my-1'
+									key={`${key1}-logout`}
+									onClick={() =>
+										signOut({
+											callbackUrl: `${basePath}/${asPath}`,
+											redirect: true,
+										})
+									}
+								>
+									<a className='flex font-semibold'>
 										<LogoutIcon className='h-5 w-[31px]' />
 										<span
 											className={clsx({
