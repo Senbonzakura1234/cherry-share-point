@@ -13,3 +13,9 @@ export const getLinkTitle = (
 		.flat()
 		.find(({ href }) => href === asPath && href !== '/')?.title;
 };
+
+export const checkProtectedPath = (asPath = '/'): boolean => {
+	if (asPath === '/') return true;
+	if (['/main', '/other'].some(path => asPath.startsWith(path))) return true;
+	return false;
+};

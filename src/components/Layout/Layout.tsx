@@ -6,36 +6,23 @@ import Header from './Header';
 import clsx from 'clsx';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { checkProtectedPath } from '~/utils/helper';
 
 export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
 	const { status } = useSession();
-	const { asPath, basePath, pathname } = useRouter();
+	const { asPath } = useRouter();
 	const id = useId();
 
-	const { isHideLayout, isLoading } = useMemo(() => {
+	const { isHideLayout, isLoading, isAccessDenied } = useMemo(() => {
+		const isAccessDenied =
+			checkProtectedPath(asPath) && status === 'unauthenticated';
 		const isHideLayout =
 			!!pageProps?.statusCode ||
 			!!pageProps?.err ||
 			status === 'unauthenticated';
 		const isLoading = status === 'loading';
-		return { isHideLayout, isLoading };
-	}, [pageProps?.err, pageProps?.statusCode, status]);
-
-	useEffect(() => {
-		console.log({ status });
-	}, [status]);
-
-	useEffect(() => {
-		console.log({ asPath });
-	}, [asPath]);
-
-	useEffect(() => {
-		console.log({ basePath });
-	}, [basePath]);
-
-	useEffect(() => {
-		console.log({ pathname });
-	}, [pathname]);
+		return { isHideLayout, isLoading, isAccessDenied };
+	}, [asPath, pageProps?.err, pageProps?.statusCode, status]);
 
 	return (
 		<div
@@ -47,6 +34,8 @@ export const Layout: FC<LayoutProps> = ({ children, pageProps }) => {
 		>
 			{isLoading ? (
 				<>loading</>
+			) : isAccessDenied ? (
+				<>access denied</>
 			) : (
 				<>
 					{!isHideLayout ? (
