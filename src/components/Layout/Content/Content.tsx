@@ -73,16 +73,18 @@ export const Content: FC<ContentProps> = ({ children, inputId }) => {
 									</li>
 								))}
 								<li className='my-1' key={`${key1}-logout`}>
-									<a className='flex font-semibold'>
+									<a
+										className='flex font-semibold'
+										onClick={({ preventDefault }) => {
+											!!preventDefault && preventDefault();
+											signOut();
+										}}
+									>
 										<LogoutIcon className='h-5 w-[31px]' />
 										<span
 											className={clsx({
 												['lg:hidden']: isDrawerOpen,
 											})}
-											onClick={({ preventDefault }) => {
-												preventDefault();
-												signOut();
-											}}
 										>
 											Logout
 										</span>
